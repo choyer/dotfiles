@@ -9,7 +9,7 @@
 if test ! $(which brew)
 then
   echo "  Installing Homebrew for you."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /tmp/homebrew-install.log
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null 2>&1
 fi
 
 # Homebrew taps
@@ -30,20 +30,16 @@ archey
 wget
 z
 git
-#node
 gh
 imagemagick
 todo-txt
 openssl
-#php54-mcrypt
-php56
 caskroom/cask/brew-cask
-josegonzalez/php/composer
 )
 
 # Homebrew casks
 CASKS=(
-#alfred
+alfred
 caffeine
 cd-to
 font-inconsolata-dz-for-powerline
@@ -57,9 +53,8 @@ google-chrome
 dash
 imagealpha
 imageoptim
-#iterm2
+iterm2
 sequel-pro
-#divvy
 atom
 sublime-text3
 the-unarchiver
@@ -98,7 +93,7 @@ echo "Done."
 echo "Brew cask install ... "
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
 # Put everything into system Applications folder
-brew cask install --appdir="/Applications" ${CASKS[@]} && brew cask alfred link
+brew cask install ${CASKS[@]} && brew cask alfred link
 echo "Done."
 
 # 1Password form the Apple Store needs Chrome to be in /Applications
