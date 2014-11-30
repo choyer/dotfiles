@@ -1,7 +1,7 @@
 'editor':
   'showIndentGuide': true
-  'fontFamily': 'Menlo'
-  'fontSize': 15
+  'fontFamily': 'Inconsolata'
+  'fontSize': 14
   'invisibles': {}
 'core':
   'ignoredNames': [
@@ -13,8 +13,8 @@
     'vendor'
   ]
   'themes': [
-    'unity-ui'
-    'glacier-syntax'
+    'unity-dark-ui'
+    'atom-dark'
   ]
   'hideGitIgnoredFiles': true
   'disabledPackages': [
