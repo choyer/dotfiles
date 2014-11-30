@@ -100,7 +100,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Create the Caskroom folder and chown it to avoid permission problems
-mkdir /etc/Caskroom
+sudo mkdir /etc/Caskroom
 sudo chown -R $(whoami) /etc/Caskroom
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
