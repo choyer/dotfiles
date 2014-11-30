@@ -24,44 +24,42 @@ caskroom/versions
 
 # Homebrew Formulas
 FORMULAS=(
+coreutils
 zsh
+archey
 wget
 z
 git
-node
+#node
 gh
 imagemagick
 todo-txt
 openssl
-php54-mcrypt
+#php54-mcrypt
+php56
 caskroom/cask/brew-cask
 josegonzalez/php/composer
 )
 
 # Homebrew casks
 CASKS=(
-alfred
+#alfred
 caffeine
+cd-to
 font-inconsolata-dz-for-powerline
 font-inconsolata
 font-source-code-pro
-font-droid-sans-mono
 font-meslo-lg
 nvalt
 firefox
-firefox-aurora
-firefox-nightly
-webkit-nightly
 opera
-opera-beta
 google-chrome
-google-chrome-canary
 dash
 imagealpha
 imageoptim
-iterm2
+#iterm2
 sequel-pro
-divvy
+#divvy
 atom
 sublime-text3
 the-unarchiver
@@ -79,28 +77,38 @@ appcleaner
 istat-menus
 vmware-fusion
 harvest
+trim-enabler
+drobo-dashboard
 )
 
 #================================================================================
 
+echo "Brew update ... "
 brew update
+echo "Done."
 
+echo "Brew tap & install ... "
 brew tap ${TAPS[@]} && brew install ${FORMULAS[@]}
+echo "Done."
+
 
 #echo " Changing shell...."
 # sudo echo "/usr/local/bin/zsh" >> /etc/shells && chsh -s /usr/local/bin/zsh
 
-
+echo "Brew cask install ... "
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
 # Put everything into system Applications folder
 brew cask install --appdir="/Applications" ${CASKS[@]} && brew cask alfred link
+echo "Done."
 
 # 1Password form the Apple Store needs Chrome to be in /Applications
 # Known issues #3
 # https://guides.agilebits.com/1password-mac-kb/5/en/topic/browser-validation-failed
 
-
-echo "Next steps: license paid apps. Install others from App Store."
-
+echo "Brew cleanup ... "
 brew cleanup
+echo "Done."
 
-exit 0
+echo "Brew cask cleanup ... "
+brew cask cleanup
+echo "Done."
