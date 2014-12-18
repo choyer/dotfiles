@@ -42,10 +42,6 @@ CASKS=(
 alfred
 caffeine
 cd-to
-font-inconsolata-dz-for-powerline
-font-inconsolata
-font-source-code-pro
-font-meslo-lg
 nvalt
 firefox
 opera
