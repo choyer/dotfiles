@@ -53,5 +53,4 @@ bindkey '^?' backward-delete-char
 # z
 . /usr/local/etc/profile.d/z.sh
 
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
 archey -c
