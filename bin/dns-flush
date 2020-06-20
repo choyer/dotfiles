@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Because Apple changes how to flush DNS settings like almost every single release and 
+# they tend to make it harder each time
+
+sudo killall -HUP mDNSResponder
