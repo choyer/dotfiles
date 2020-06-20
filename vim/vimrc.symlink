@@ -1,4 +1,29 @@
-syntax on
+" Basic Settings
 
-" Wrap gitcommit file types at the appropriate length
+noremap jk <ESC>
 filetype indent plugin on
+let mapleader = " "
+syntax on
+set encoding=utf-8
+set clipboard=unnamedplus
+set laststatus=2
+set noshowmode
+set number
+set ruler
+
+" Set highlight of search
+set hlsearch
+
+
+map <C-o> :NERDTreeToggle<CR>
+
+" Arrows are unvimlike
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
