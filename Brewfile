@@ -13,7 +13,7 @@ brew 'coreutils'
 brew 'git'
 brew 'grc'
 brew 'jp2a'
-brew 'libcaca', args: ['with-imlib2']
+brew 'libcaca'
 brew 'node'
 brew 'openssl'
 brew 'readline'
