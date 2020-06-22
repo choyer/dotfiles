@@ -45,6 +45,7 @@ cask 'rectangle'
 cask 'sequel-pro'
 cask 'spotify'
 cask 'transmit'
+cask 'ubersicht'
 
 # Install these Quick Look plugins >
 cask 'betterzipql'
