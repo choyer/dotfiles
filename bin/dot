@@ -7,6 +7,15 @@
 
 set -e
 
+user () {
+  printf "\r [ \033[0;33m?\033[0m ] $1 "
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+}
+
 parentDirectory="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 dotfilesDirectory="$(cd "$( dirname "$parentDirectory" )" && pwd -P)"
 
@@ -53,3 +62,15 @@ brew update
 # Install software
 echo "› $ZSH/script/install"
 $ZSH/script/install
+
+user 'Reboot system now?  [y]es, [n]o?'
+read -n 1 action
+
+case "$action" in
+  y )
+    echo ''
+    sudo shutdown -r now;;
+  * )
+    fail '\033[31m  --> REBOOT IS REQUIRED for all settings to take effect. Please reboot manually! --  \033[0m\n'
+    exit;;
+esac
