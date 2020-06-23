@@ -22,7 +22,7 @@ fail () {
 }
 
 
-printf "\n  --> Start MacOS set-defaults.sh --\n"
+printf '\n\033[33m  --> Start MacOS set-defaults.sh -- \033[0m\n'
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -1020,4 +1020,5 @@ for app in "Activity Monitor" \
 done
 
 success "$msg"
-printf "\n\n  --> COMPLETE: MacOS set-defaults.sh finished! --"
+printf '\n\033[32m  --> COMPLETE: MacOS set-defaults.sh finished! --\033[0m\n'
+printf '\033[33m  --> REBOOT REQUIRED for many of these settings to take effect! --\033[0m\n'
