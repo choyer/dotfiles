@@ -53,6 +53,9 @@ info "$msg"
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
+# Set menubar to hidden
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # Set dark mode in Mojave and later (restart required)
 defaults write "Apple Global Domain" "AppleInterfaceStyle" "Dark"
 
