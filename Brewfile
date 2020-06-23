@@ -5,6 +5,7 @@ cask_args appdir: '/Applications'
 # What's on tap?
 tap 'homebrew/bundle'
 tap 'homebrew/cask-fonts'
+tap 'buo/cask-upgrade'
 
 # Install these packages >
 brew 'ack'
