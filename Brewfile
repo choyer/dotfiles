@@ -2,7 +2,7 @@
 
 cask_args appdir: '/Applications'
 
-# What's on tap?
+# What's on tap? Custom taps >
 tap 'homebrew/bundle'
 tap 'homebrew/cask-fonts'
 tap 'buo/cask-upgrade'
@@ -13,6 +13,7 @@ brew 'archey'
 brew 'coreutils'
 brew 'git'
 brew 'grc'
+brew 'hugo'
 brew 'jp2a'
 brew 'libcaca'
 brew 'node'
