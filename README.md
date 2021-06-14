@@ -1,7 +1,7 @@
 # Carl Hoyer's dotfiles
 
 Originally forked from [holman/dotfiles](https://github.com/holman/dotfiles)
-and currently a work in progress.
+and a constant work in progress.
 
 ## dotfiles
 
@@ -31,7 +31,7 @@ this script in `bin/`.
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
-forked dotfiles — say, "Java" — you can simply add a `java` directory and put
+dotfiles — say, "Rust" — you can simply add a `rust` directory and put
 files in there. Anything with an extension of `.zsh` will get automatically
 included into your shell. Anything with an extension of `.symlink` will get
 symlinked without extension into `$HOME` when you run `script/bootstrap`.
