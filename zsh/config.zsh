@@ -53,4 +53,4 @@ bindkey '^?' backward-delete-char
 # z
 . /usr/local/etc/profile.d/z.sh
 
-archey -c
+neofetch
