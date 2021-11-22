@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(zsh-autosuggestions zsh-syntax-highlighting git gitignore osx colored-man-pages urltools)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting git gitignore macos colored-man-pages urltools)
 
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
 pasteinit() {
