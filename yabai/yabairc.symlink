@@ -8,9 +8,11 @@
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
 
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
+# float 1password
+yabai -m rule --add app="^1Password$" manage=off
 
 # global settings
 yabai -m config mouse_follows_focus          on
