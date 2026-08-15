@@ -1,8 +1,7 @@
 {{ if eq .osid "linux-omarchy" -}}
 
 {{ $packages := list
-     "readline"
-     "ripgrep" -}}
+     "readline" -}}
 
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
