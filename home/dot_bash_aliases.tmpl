@@ -1,0 +1,46 @@
+{{- if (not (eq .chezmoi.os "darwin")) -}}
+## CRH bash aliases
+
+# safety
+alias rm="rm -i"                  # Prompt before deleting
+alias cp="cp -i"                  # Prompt before overwriting a file
+alias mv="mv -i"                  # Prompt before moving/renaming over a file
+alias ln="ln -i"                  # Prompt before creating links over existing files
+
+# navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ll="ls -lahF --color=auto"  # Detailed list, human-readable sizes, hidden files, colorized
+alias l.="ls -d .*"               # Show ONLY hidden files
+alias cx="chmod +x"               # Quickly make a script executable
+
+# helpfuls
+alias src="source ~/.bashrc"                  # Instantly reload your profile after making changes
+alias ealias="chezmoi edit ~/.bash_aliases"   # Instantly open your alias configuration file
+alias cls="clear; ls"                         # Clear the screen and show current files
+alias myip="curl ifconfig.me"                 # Quickly print your public IP address
+alias path="echo -e \${PATH//:/\\\\n}"        # Print your system PATH cleanly, line-by-line
+alias plz="sudo \$(fc -ln -1)"                # Re-run the previous command with sudo privileges
+
+# line count
+alias lcount="find . -type f -exec cat {} + | wc -l"
+
+# git
+# TODO: evaluate switching to maintaining git aliases in .gitconfig and using this approach:
+# https://gist.github.com/panchalkalpesh/7d5b45180e0ca07b4f5e3b108d5daba1
+alias g='git'
+alias ga='git add'
+alias gl='git pull --prune'
+alias gnp='git --no-pager'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gp='git push origin HEAD'
+alias gd='git diff'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gco='git checkout'
+alias gcb='git copy-branch-name'
+alias gb='git branch'
+alias gst='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+
+{{ end -}}

@@ -15,9 +15,10 @@ fi
 source "$OMARCHY_PATH/default/bash/rc"
 
 # Add your own exports, aliases, and functions here.
-#
-# Make an alias for invoking commands you use constantly
-# alias p='python'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 # Use 1password for SSH
 export SSH_AUTH_SOCK=~/.1password/agent.sock
@@ -26,6 +27,3 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # Hook direnv
 eval "$(direnv hook bash)"
-
-# line count
-alias lcount="find . -type f -exec cat {} + | wc -l"
