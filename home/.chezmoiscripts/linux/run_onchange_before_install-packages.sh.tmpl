@@ -1,0 +1,17 @@
+{{ if eq .osid "linux-omarchy" -}}
+
+{{ $packages := list
+     "readline" -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo }}pacman -S {{ $packages | join " " }}
+
+{{ end -}}
