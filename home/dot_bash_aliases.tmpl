@@ -44,7 +44,7 @@ alias lcount="find . -type f -exec cat {} + | wc -l"
 # TODO: evaluate switching to maintaining git aliases in .gitconfig and using this approach:
 # https://gist.github.com/panchalkalpesh/7d5b45180e0ca07b4f5e3b108d5daba1
 alias g='git'
-alias ga='git add'
+alias gaa='git add . && gst'
 alias gl='git pull --prune'
 alias gnp='git --no-pager'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"

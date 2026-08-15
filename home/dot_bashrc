@@ -15,7 +15,6 @@ fi
 source "$OMARCHY_PATH/default/bash/rc"
 
 # Add your own exports, aliases, and functions here.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
