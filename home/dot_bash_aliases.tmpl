@@ -15,6 +15,20 @@ alias ll="ls -lahF --color=auto"  # Detailed list, human-readable sizes, hidden 
 alias l.="ls -d .*"               # Show ONLY hidden files
 alias cx="chmod +x"               # Quickly make a script executable
 
+# chezmoi
+# Core shortcuts
+alias cz="chezmoi"
+alias cza="chezmoi add"
+alias cze="chezmoi edit"
+alias czp="chezmoi diff"
+alias czapply="chezmoi apply"
+
+# Quick CD into the source directory
+alias czcd="chezmoi cd"
+
+# Sync changes (pull from git, apply, push back)
+alias czsync="chezmoi update"
+
 # helpfuls
 alias src="source ~/.bashrc"                  # Instantly reload your profile after making changes
 alias ealias="chezmoi edit ~/.bash_aliases"   # Instantly open your alias configuration file
