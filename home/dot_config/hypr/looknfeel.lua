@@ -5,10 +5,16 @@
 hl.config({
   -- 14-08-2026: CRH preferred settings
   general = {
-    -- No gaps between windows or borders.
-    gaps_in = -1,
-    gaps_out = 0,
-    border_size = 1,
+    -- TRUE NO gaps between windows or borders.
+    -- gaps_in = -1,
+    -- gaps_out = 0,
+    -- border_size = 1,
+
+    -- SMALLER gaps between windows or borders.
+    gaps_in = 1,
+    gaps_out = 2,
+    border_size = 2,
+
     -- Change to niri-like side-scrolling layout.
     -- layout = "scrolling",
   },
