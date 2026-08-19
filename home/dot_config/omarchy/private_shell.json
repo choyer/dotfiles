@@ -7,9 +7,9 @@
           "id": "omarchy.indicators"
         },
         {
-          "format": "dddd HH:mm",
-          "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
+          "format": "ddd d MMM HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
           "verticalFormat": "HH\n—\nmm"
         },
         {
@@ -28,6 +28,13 @@
         },
         {
           "id": "omarchy.workspaces"
+        },
+        {
+          "id": "crmne.active-window",
+          "iconSaturation": 36,
+          "iconSize": 14,
+          "maxWidth": 180,
+          "showTitle": true
         }
       ],
       "right": [
@@ -37,6 +44,9 @@
             "1Password_status_icon_1"
           ],
           "hidden": []
+        },
+        {
+          "id": "crmne.hyprmoncfg"
         },
         {
           "id": "omarchy.dropbox"
