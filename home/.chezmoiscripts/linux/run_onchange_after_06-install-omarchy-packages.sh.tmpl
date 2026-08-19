@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# chezmoi:run_onchange_after
+#
+# Installs Omarchy Arch packages via pacman (official repositories).
+# This is a chezmoi run_onchange_after_ script, so chezmoi hashes the
+# fully-rendered contents below and only re-runs it when that hash changes
+# -- i.e. whenever you edit the PACMAN_PACKAGES list.
+#
+# ---------------------------------------------------------------------------
+# Define your packages here. One package name per line.
+# ---------------------------------------------------------------------------
+PACMAN_PACKAGES=(
+  "git-delta"
+  "git-lfs"
+  "readline"
+)
+
+set -uo pipefail
+
+{{ if ne .chezmoi.os "linux" -}}
+echo "omarchy pkg: skipping, not running on Linux ({{ .chezmoi.os }})."
+exit 0
+{{ end -}}
+
+if [ "${#PACMAN_PACKAGES[@]}" -eq 0 ]; then
+  echo "omarchy pkg: no packages defined, skipping."
+  exit 0
+fi
+
+if ! command -v pacman >/dev/null 2>&1; then
+  echo "omarchy pkg: 'pacman' command not found, skipping (not an Omarchy install?)." >&2
+  exit 0
+fi
+
+fail_count=0
+
+for pkg in "${PACMAN_PACKAGES[@]}"; do
+  echo "omarchy pkg: installing ${pkg}..."
+  if sudo pacman -S --needed --noconfirm "${pkg}"; then
+    echo "omarchy pkg: ${pkg} installed."
+  else
+    status=$?
+    echo "omarchy pkg: failed to install ${pkg} (exit ${status})." >&2
+    fail_count=$((fail_count + 1))
+  fi
+done
+
+if [ "${fail_count}" -gt 0 ]; then
+  echo "omarchy pkg: ${fail_count} package(s) failed to install." >&2
+  # Don't block the rest of chezmoi's run over a package failure.
+  exit 0
+fi
+
+echo "omarchy pkg: done."
