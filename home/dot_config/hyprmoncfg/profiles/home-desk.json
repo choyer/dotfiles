@@ -1,0 +1,118 @@
+{
+  "name": "Home Desk",
+  "created_at": "2026-08-19T02:27:32.931433213Z",
+  "updated_at": "2026-08-19T04:46:52.852755976Z",
+  "outputs": [
+    {
+      "key": "dell inc.|dell u2713hm|7jny539ba0rl",
+      "match_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+      "name": "DP-5",
+      "description": "Dell Inc. DELL U2713HM 7JNY539BA0RL",
+      "make": "Dell Inc.",
+      "model": "DELL U2713HM",
+      "serial": "7JNY539BA0RL",
+      "enabled": true,
+      "mode": "2560x1440@59.95Hz",
+      "width": 2560,
+      "height": 1440,
+      "refresh": 59.95,
+      "x": 2560,
+      "y": 0,
+      "scale": 1,
+      "transform": 0,
+      "bitdepth": 8,
+      "cm": "srgb",
+      "sdr_brightness": 1,
+      "sdr_saturation": 1,
+      "sdr_min_luminance": 0.2,
+      "sdr_max_luminance": 80,
+      "min_luminance": 0
+    },
+    {
+      "key": "thermotrex corporation|tl140bdxp01-0",
+      "match_key": "thermotrex corporation|tl140bdxp01-0",
+      "name": "eDP-1",
+      "description": "Thermotrex Corporation TL140BDXP01-0",
+      "make": "Thermotrex Corporation",
+      "model": "TL140BDXP01-0",
+      "enabled": true,
+      "mode": "2560x1440@120.00Hz",
+      "width": 2560,
+      "height": 1440,
+      "refresh": 120,
+      "x": 512,
+      "y": 0,
+      "scale": 1.25,
+      "transform": 0,
+      "bitdepth": 8,
+      "cm": "srgb",
+      "sdr_brightness": 1,
+      "sdr_saturation": 1,
+      "sdr_min_luminance": 0.2,
+      "sdr_max_luminance": 80,
+      "min_luminance": 0
+    }
+  ],
+  "workspaces": {
+    "enabled": true,
+    "strategy": "sequential",
+    "max_workspaces": 9,
+    "group_size": 3,
+    "monitor_order": [
+      "dell inc.|dell u2713hm|7jny539ba0rl",
+      "thermotrex corporation|tl140bdxp01-0"
+    ],
+    "rules": [
+      {
+        "workspace": "1",
+        "output_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+        "output_name": "DP-5",
+        "default": true,
+        "persistent": true
+      },
+      {
+        "workspace": "2",
+        "output_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+        "output_name": "DP-5"
+      },
+      {
+        "workspace": "3",
+        "output_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+        "output_name": "DP-5"
+      },
+      {
+        "workspace": "4",
+        "output_key": "thermotrex corporation|tl140bdxp01-0",
+        "output_name": "eDP-1",
+        "default": true,
+        "persistent": true
+      },
+      {
+        "workspace": "5",
+        "output_key": "thermotrex corporation|tl140bdxp01-0",
+        "output_name": "eDP-1"
+      },
+      {
+        "workspace": "6",
+        "output_key": "thermotrex corporation|tl140bdxp01-0",
+        "output_name": "eDP-1"
+      },
+      {
+        "workspace": "7",
+        "output_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+        "output_name": "DP-5"
+      },
+      {
+        "workspace": "8",
+        "output_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+        "output_name": "DP-5"
+      },
+      {
+        "workspace": "9",
+        "output_key": "dell inc.|dell u2713hm|7jny539ba0rl",
+        "output_name": "DP-5"
+      }
+    ]
+  },
+  "exec": ""
+}
