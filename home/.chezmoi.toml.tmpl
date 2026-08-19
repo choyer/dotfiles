@@ -22,13 +22,17 @@
 {{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
 {{- end -}}
 
+
 {{- if eq .chezmoi.os "windows" -}}
 {{-   $ephemeral = true -}}
 {{- end -}}
 
+
+{{- $hwplatform := "" -}}{{/* Optional: $hwplatform - Hardware platform name to define specifics based on machine type e.g. laptop, desktop, thinkpad, dellxps, etc. */}}
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "om" -}}
 {{-     $personal = true -}}
+{{-     $hwplatform = "thinkpad" -}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
@@ -50,6 +54,7 @@
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
+    hwplatform = {{ $platform | quote }}
     osid = {{ $osID | quote }}
 
 {{- if lookPath "podman" }}
