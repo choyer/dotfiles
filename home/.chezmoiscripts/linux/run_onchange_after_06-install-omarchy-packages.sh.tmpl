@@ -17,7 +17,14 @@ PACMAN_PACKAGES=(
 
 set -uo pipefail
 
-echo "----- Arch Package Installation -----"
+# Define Colors
+NC='\e[0m' # No Color (Reset)
+RED='\e[31m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
+
+echo -e "\n----- ${GREEN}Arch Package Installation${NC} -----"
 
 {{ if ne .chezmoi.os "linux" -}}
 echo "omarchy pkg: skipping, not running on Linux ({{ .chezmoi.os }})."

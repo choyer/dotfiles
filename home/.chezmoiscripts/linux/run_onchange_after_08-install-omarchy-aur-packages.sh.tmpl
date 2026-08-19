@@ -15,7 +15,14 @@ AUR_PACKAGES=(
 
 set -uo pipefail
 
-echo "----- AUR Package Installation -----"
+# Define Colors
+NC='\e[0m' # No Color (Reset)
+RED='\e[31m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
+
+echo -e "\n----- ${GREEN}AUR Package Installation${NC} -----"
 
 {{ if ne .chezmoi.os "linux" -}}
 echo "Omarchy AUR: skipping, not running on Linux ({{ .chezmoi.os }})."
