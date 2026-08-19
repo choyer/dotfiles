@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# chezmoi:run_onchange_after
+#
+# Installs and (optionally) enables Omarchy 4.x plugins via the built-in
+# `omarchy plugin` command. This is a chezmoi run_onchange_after_ script,
+# so chezmoi hashes the fully-rendered contents below and only re-runs it
+# when that hash changes -- i.e. whenever you edit the PLUGINS list.
+#
+# ---------------------------------------------------------------------------
+# Define your plugins here. One entry per line, pipe-delimited:
+#   "<github-repo-url>|<enable: true|false>"
+# ---------------------------------------------------------------------------
+PLUGINS=(
+  "https://github.com/crmne/omarchy-hyprmoncfg|true"
+)
+
+set -uo pipefail
+
+{{ if ne .chezmoi.os "linux" -}}
+echo "omarchy plugins: skipping, not running on Linux ({{ .chezmoi.os }})."
+exit 0
+{{ end -}}
+
+if ! command -v omarchy >/dev/null 2>&1; then
+  echo "omarchy plugins: 'omarchy' command not found, skipping (not an Omarchy install?)." >&2
+  exit 0
+fi
+
+fail_count=0
+
+for entry in "${PLUGINS[@]}"; do
+  repo="${entry%%|*}"
+  enable="${entry##*|}"
+
+  args=(plugin add "$repo" --yes)
+  if [ "$enable" = "true" ]; then
+    args+=(--enable)
+  fi
+
+  echo "omarchy plugins: installing ${repo} (enable=${enable})..."
+
+  if output=$(omarchy "${args[@]}" 2>&1); then
+    echo "${output}"
+  else
+    status=$?
+    if echo "${output}" | grep -qi "already"; then
+      echo "omarchy plugins: ${repo} already installed, skipping."
+    else
+      echo "omarchy plugins: failed to install ${repo} (exit ${status}):" >&2
+      echo "${output}" >&2
+      fail_count=$((fail_count + 1))
+    fi
+  fi
+done
+
+if [ "${fail_count}" -gt 0 ]; then
+  echo "omarchy plugins: ${fail_count} plugin(s) failed to install." >&2
+  exit 1
+fi
+
+echo "omarchy plugins: done."
