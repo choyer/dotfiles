@@ -16,6 +16,8 @@ PLUGINS=(
 
 set -uo pipefail
 
+echo "----- Omarchy Plugin Installation -----"
+
 {{ if ne .chezmoi.os "linux" -}}
 echo "omarchy plugins: skipping, not running on Linux ({{ .chezmoi.os }})."
 exit 0

@@ -17,6 +17,8 @@ PACMAN_PACKAGES=(
 
 set -uo pipefail
 
+echo "----- Arch Package Installation -----"
+
 {{ if ne .chezmoi.os "linux" -}}
 echo "omarchy pkg: skipping, not running on Linux ({{ .chezmoi.os }})."
 exit 0
