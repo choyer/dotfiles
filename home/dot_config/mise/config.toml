@@ -1,0 +1,13 @@
+[tools]
+claude = "latest"
+codex = "latest"
+gh = "latest"
+go = "latest"
+node = "latest"
+ruby = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
+
+[settings.ruby]
+compile = false
