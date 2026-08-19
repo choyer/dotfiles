@@ -1,7 +1,9 @@
 {{ if eq .osid "linux-omarchy" -}}
 
 {{ $packages := list
-     "readline" -}}
+      "git-delta"
+      "git-lfs"
+      "readline" -}}
 
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
