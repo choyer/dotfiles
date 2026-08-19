@@ -54,7 +54,7 @@
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
-    hwplatform = {{ $platform | quote }}
+    hwplatform = {{ $hwplatform | quote }}
     osid = {{ $osID | quote }}
 
 {{- if lookPath "podman" }}
