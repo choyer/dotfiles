@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+# chezmoi:run_onchange_after
+#
+# Installs Omarchy AUR packages via yay (Omarchy's bundled AUR helper).
+# This is a chezmoi run_onchange_after_ script, so chezmoi hashes the
+# fully-rendered contents below and only re-runs it when that hash changes
+# -- i.e. whenever you edit the AUR_PACKAGES list.
+#
+# ---------------------------------------------------------------------------
+# Define your AUR packages here. One package name per line.
+# ---------------------------------------------------------------------------
+AUR_PACKAGES=(
+  "hyprmoncfg"
+)
+
+set -uo pipefail
+
+{{ if ne .chezmoi.os "linux" -}}
+echo "Omarchy AUR: skipping, not running on Linux ({{ .chezmoi.os }})."
+exit 0
+{{ end -}}
+
+if [ "${#AUR_PACKAGES[@]}" -eq 0 ]; then
+  echo "Omarchy AUR: no packages defined, skipping."
+  exit 0
+fi
+
+if ! command -v yay >/dev/null 2>&1; then
+  echo "Omarchy AUR: 'yay' command not found, skipping (not an Omarchy install?)." >&2
+  exit 0
+fi
+
+cat <<'EOF'
+
+================================================================================
+ AUR PACKAGE INSTALL WARNING
+================================================================================
+The Arch User Repository (AUR) is community-maintained and NOT reviewed by
+Arch or Omarchy. Packages can contain arbitrary build scripts (PKGBUILDs)
+that run with your user permissions during install. Only proceed if you
+recognize and trust every package below.
+
+The following packages are queued for install:
+EOF
+printf '  - %s\n' "${AUR_PACKAGES[@]}"
+echo
+
+# Only prompt when attached to an interactive terminal. In a non-interactive
+# chezmoi run (e.g. CI, scripted bootstrap) there's no one to answer, so skip
+# the AUR install rather than guess, and let the rest of chezmoi continue.
+if [ ! -t 0 ]; then
+  echo "Omarchy AUR: no interactive terminal detected, skipping AUR install." >&2
+  echo "Omarchy AUR: re-run 'chezmoi apply' from an interactive shell to install these packages." >&2
+  exit 0
+fi
+
+read -r -p "Proceed with installing these AUR packages? [y/N] " reply < /dev/tty || reply="n"
+case "${reply}" in
+  [yY]|[yY][eE][sS])
+    ;;
+  *)
+    echo "Omarchy AUR: cancelled by user, skipping AUR install."
+    exit 0
+    ;;
+esac
+
+fail_count=0
+
+for pkg in "${AUR_PACKAGES[@]}"; do
+  if pacman -Qi "${pkg}" >/dev/null 2>&1; then
+    echo "Omarchy AUR: ${pkg} already installed, skipping."
+    continue
+  fi
+
+  echo "Omarchy AUR: installing ${pkg}..."
+  if yay -S --needed --noconfirm "${pkg}"; then
+    echo "Omarchy AUR: ${pkg} installed."
+  else
+    status=$?
+    echo "Omarchy AUR: failed to install ${pkg} (exit ${status})." >&2
+    fail_count=$((fail_count + 1))
+  fi
+done
+
+if [ "${fail_count}" -gt 0 ]; then
+  echo "Omarchy AUR: ${fail_count} package(s) failed to install." >&2
+  # Don't block the rest of chezmoi's run over an AUR package failure.
+  exit 0
+fi
+
+echo "Omarchy AUR: done."
