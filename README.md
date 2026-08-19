@@ -8,7 +8,23 @@ Install them via:
 chezmoi init choyer
 ```
 
-## Helpful chezmoi Aliases
+Verify what's different from yours via:  
+
+```console
+chezmoi diff
+```
+```
+```
+
+Apply them via:  
+
+```console
+chezmoi apply
+```
+```
+```
+
+## Baked-in chezmoi Aliases
 
 ```console
 # Core shortcuts
