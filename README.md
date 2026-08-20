@@ -1,6 +1,6 @@
 # CRH's .dotfiles
 
-Carl Hoyer's dotfiles, managed by [chezmoi](https://www.chezmoi.io)
+Carl Hoyer's dotfiles (currently tuned for use with [Omarchy](https://github.com/basecamp/omarchy)), managed by [chezmoi](https://www.chezmoi.io)
 
 Install them via:  
 
@@ -13,18 +13,25 @@ Verify what's different from yours via:
 ```console
 chezmoi diff
 ```
-```
-```
 
 Apply them via:  
 
 ```console
 chezmoi apply
 ```
-```
-```
 
-## Baked-in chezmoi Aliases
+## Omarchy Conveniences
+
+1. Define Omarchy packages to install by modifying:  
+[home/.chezmoiscripts/linux/run_onchange_after_06-install-omarchy-packages.sh.tmpl](home/.chezmoiscripts/linux/run_onchange_after_06-install-omarchy-packages.sh.tmpl)
+
+2. Define Omarchy AUR Packages to install by modifying:  
+[home/.chezmoiscripts/linux/run_onchange_after_08-install-omarchy-aur-packages.sh.tmpl](home/.chezmoiscripts/linux/run_onchange_after_08-install-omarchy-aur-packages.sh.tmpl)
+
+3. Define Omarchy Plugins to install by modifying:  
+[home/.chezmoiscripts/linux/run_onchange_after_10-install-omarchy-plugins.sh.tmpl](home/.chezmoiscripts/linux/run_onchange_after_10-install-omarchy-plugins.sh.tmpl)
+
+## Baked-in chezmoi Bash Aliases
 
 ```console
 # Core shortcuts
