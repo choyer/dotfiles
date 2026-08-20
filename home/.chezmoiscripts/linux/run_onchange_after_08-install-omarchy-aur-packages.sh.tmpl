@@ -22,7 +22,7 @@ GREEN='\e[32m'
 YELLOW='\e[33m'
 BLUE='\e[34m'
 
-echo -e "\n----- ${GREEN}AUR Package Installation${NC} -----"
+echo -e "\n====== ${GREEN}AUR Package Installation${NC} ======"
 
 {{ if ne .chezmoi.os "linux" -}}
 echo "Omarchy AUR: skipping, not running on Linux ({{ .chezmoi.os }})."
@@ -42,7 +42,7 @@ fi
 cat <<'EOF'
 
 ================================================================================
- AUR PACKAGE INSTALL WARNING
+ ⧎ AUR PACKAGE INSTALL WARNING ⧎
 ================================================================================
 The Arch User Repository (AUR) is community-maintained and NOT reviewed by
 Arch or Omarchy. Packages can contain arbitrary build scripts (PKGBUILDs)
