@@ -26,20 +26,20 @@ GREEN='\e[32m'
 YELLOW='\e[33m'
 BLUE='\e[34m'
 
-echo -e "\n====== ${GREEN}Arch Package Installation${NC} ======"
+echo -e "\n====== ${GREEN}Omarchy Package Installation${NC} ======"
 
 {{ if ne .chezmoi.os "linux" -}}
-echo "omarchy pkg: skipping, not running on Linux ({{ .chezmoi.os }})."
+echo -e "omarchy pkg: ${YELLOW}skipping${NC}, not running on Linux ({{ .chezmoi.os }})."
 exit 0
 {{ end -}}
 
 if [ "${#PACMAN_PACKAGES[@]}" -eq 0 ]; then
-  echo "omarchy pkg: no packages defined, skipping."
+  echo -e "omarchy pkg: ${YELLOW}no packages defined${NC}, skipping."
   exit 0
 fi
 
 if ! command -v pacman >/dev/null 2>&1; then
-  echo "omarchy pkg: 'pacman' command not found, skipping (not an Omarchy install?)." >&2
+  echo -e "omarchy pkg: {$RED}'pacman' command not found${NC}, skipping (not an Omarchy install?)." >&2
   exit 0
 fi
 
@@ -48,18 +48,18 @@ fail_count=0
 for pkg in "${PACMAN_PACKAGES[@]}"; do
   echo "omarchy pkg: installing ${pkg}..."
   if sudo pacman -S --needed --noconfirm "${pkg}"; then
-    echo "omarchy pkg: ${pkg} installed."
+    echo -e "omarchy pkg: ${BLUE}${pkg} ${GREEN}installed.${NC}"
   else
     status=$?
-    echo "omarchy pkg: failed to install ${pkg} (exit ${status})." >&2
+    echo -e "omarchy pkg: ${RED}failed to install ${pkg} (exit ${status}).${NC}" >&2
     fail_count=$((fail_count + 1))
   fi
 done
 
 if [ "${fail_count}" -gt 0 ]; then
-  echo "omarchy pkg: ${fail_count} package(s) failed to install." >&2
+  echo -e "omarchy pkg: ${YELLOW}${fail_count}${NC} package(s) ${RED}failed to install.{$NC}" >&2
   # Don't block the rest of chezmoi's run over a package failure.
   exit 0
 fi
 
-echo "omarchy pkg: done."
+echo -e "omarchy pkg: ${GREEN}done.${NC}"

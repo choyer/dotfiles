@@ -29,12 +29,12 @@ BLUE='\e[34m'
 echo -e "\n====== ${GREEN}Omarchy Plugin Installation${NC} ======"
 
 {{ if ne .chezmoi.os "linux" -}}
-echo "omarchy plugins: skipping, not running on Linux ({{ .chezmoi.os }})."
+echo -e "omarchy plugins: ${YELLOW}skipping${NC}, not running on Linux ({{ .chezmoi.os }})."
 exit 0
 {{ end -}}
 
 if ! command -v omarchy >/dev/null 2>&1; then
-  echo "omarchy plugins: 'omarchy' command not found, skipping (not an Omarchy install?)." >&2
+  echo -e "omarchy plugins: ${RED}'omarchy' command not found${NC}, skipping (not an Omarchy install?)." >&2
   exit 0
 fi
 
@@ -49,16 +49,16 @@ for entry in "${PLUGINS[@]}"; do
     args+=(--enable)
   fi
 
-  echo "omarchy plugins: installing ${repo} (enable=${enable})..."
+  echo -e "omarchy plugins: ${BLUE}installing ${YELLOW}${repo}${NC} (enable=${enable})..."
 
   if output=$(omarchy "${args[@]}" 2>&1); then
     echo "${output}"
   else
     status=$?
     if echo "${output}" | grep -qi "already"; then
-      echo "omarchy plugins: ${repo} already installed, skipping."
+      echo -e "omarchy plugins: ${repo} already installed, ${YELLOW}skipping.${NC}"
     else
-      echo "omarchy plugins: failed to install ${repo} (exit ${status}):" >&2
+      echo -e "omarchy plugins: ${RED}failed to install ${repo}${NC} (exit ${status}):" >&2
       echo "${output}" >&2
       fail_count=$((fail_count + 1))
     fi
@@ -66,8 +66,8 @@ for entry in "${PLUGINS[@]}"; do
 done
 
 if [ "${fail_count}" -gt 0 ]; then
-  echo "omarchy plugins: ${fail_count} plugin(s) failed to install." >&2
+  echo -e "omarchy plugins: ${YELLOW}${fail_count}${NC} plugin(s) ${RED}failed to install.${NC}" >&2
   exit 1
 fi
 
-echo "omarchy plugins: done."
+echo -e "omarchy plugins: ${GREEN}done.${NC}"
