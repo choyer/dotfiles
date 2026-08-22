@@ -1,14 +1,11 @@
 -- Keep only your personal keybinding overrides here. Add new bindings or
 -- unbind defaults before replacing them.
 
--- 14-08-2026 CRH Omarchy overrides
+-- 22-08-2026 CRH Omarchy overrides
 
--- !! INOP !! Todo: fix
--- Shift active workspace to the next monitor safely
---o.bind("SUPER + SHIFT + right", hl.dsp.workspace.move({ monitor = "+1" }))
-
--- Shift active workspace to the previous monitor safely
---o.bind("SUPER + SHIFT + left", hl.dsp.workspace.move({ monitor = "-1" }))
+-- Move current workspace to the monitor on the left/right
+o.bind("SUPER + CTRL + left", "Move workspace to monitor", hl.dsp.workspace.move({ monitor = "l" }))
+o.bind("SUPER + CTRL + right", "Move workspace to monitor", hl.dsp.workspace.move({ monitor = "r" }))
 
 -- See current bindings and descriptions:
 --   omarchy menu keybindings --print
