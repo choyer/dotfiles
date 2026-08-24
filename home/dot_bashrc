@@ -16,7 +16,5 @@ fi
 # Use 1password for SSH
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
-. "$HOME/.cargo/env"
-
 # Hook direnv
 eval "$(direnv hook bash)"
