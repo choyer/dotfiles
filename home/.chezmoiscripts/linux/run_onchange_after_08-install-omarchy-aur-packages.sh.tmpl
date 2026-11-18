@@ -10,7 +10,9 @@
 # Define your AUR packages here. One package name per line.
 # ---------------------------------------------------------------------------
 AUR_PACKAGES=(
+{{- if ne .hwplatform "imac18-3" }}
   "hyprmoncfg"
+{{- end }}
   "tty-clock"
 )
 

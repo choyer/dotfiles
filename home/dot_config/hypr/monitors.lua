@@ -12,3 +12,7 @@ hl.monitor({ output = "", mode = "preferred", position = "auto", scale = omarchy
 
 -- Portrait/rotated secondary monitor (transform: 1 = 90°, 3 = 270°).
 -- hl.monitor({ output = "DP-2", mode = "preferred", position = "auto", scale = 1, transform = 1 })
+
+-- >>> imac-patcher: color
+hl.monitor({ output = "desc:Apple Computer Inc iMac 74C218B728525", mode = "preferred", position = "auto", scale = 1.666667, cm = "dp3", bitdepth = 10 })
+-- <<< imac-patcher: color

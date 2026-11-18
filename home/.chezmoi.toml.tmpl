@@ -33,6 +33,8 @@
 {{-   if eq $hostname "om" -}}
 {{-     $personal = true -}}
 {{-     $hwplatform = "thinkpad" -}}
+{{-   else if eq $hostname "om5k" -}}
+{{-     $hwplatform = "imac18-3" -}}{{/* iMac18,3: no hyprmoncfg -- see .chezmoiignore */}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}

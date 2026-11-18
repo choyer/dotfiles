@@ -1,0 +1,7 @@
+{{- if eq .hwplatform "imac18-3" }}
+# iMac18,3: hyprmoncfg is not used here. A profile asking for 3840x2160 makes the
+# patched 5K amdgpu driver hit a kernel BUG; the imac-patcher block in
+# .config/hypr/monitors.lua drives the panel instead.
+.config/hyprmoncfg
+.config/hyprmoncfg/**
+{{- end }}

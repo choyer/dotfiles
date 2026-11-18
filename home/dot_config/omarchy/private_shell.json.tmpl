@@ -45,9 +45,11 @@
           ],
           "hidden": []
         },
+{{- if ne .hwplatform "imac18-3" }}
         {
           "id": "crmne.hyprmoncfg"
         },
+{{- end }}
         {
           "id": "omarchy.dropbox"
         },
